@@ -8,6 +8,8 @@
  */ 
 
                                          // Imports
+import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -20,9 +22,10 @@ public class MusicalWords {
                                              // Scanner
     Scanner scan = new Scanner(System.in);
                                              // Declaring and assigning variables
+    System.out.print("Enter a sentence: ");
     String sentence = scan.nextLine();
-    ArrayList<Integer> notesArr = new ArrayList<Integer>();
-    int key = 0;
+    ArrayList<Integer> notesArr;
+    int key;
     Music music = new Music();
     
                                              /* Method that takes a string and turns each
@@ -32,7 +35,7 @@ public class MusicalWords {
                                               * Input: String
                                               * Output: Integer ArrayList
                                               */
-    // notesArr = music.WordsToNotesVal(sentence);
+    notesArr = music.WordsToNotesVal(sentence);
     
                                              /* Method that takes a string and turns each
                                               * word into a number. It will do this based on
@@ -48,13 +51,16 @@ public class MusicalWords {
                                               * Output: Integer
                                               */                                         
     key = music.WordCountToKey(sentence);
-    System.out.println(key);
     
                                              /* Method that uses the rhythm and tone array lists and the 
                                               * key integer to produce music.
                                               * Input: Two ArrayList, one Integer
                                               */                                         
     // key = music.createTune(notesArr, rhythmArr, key);
+
+    // Testing print statements
+    System.out.println("Key: " + key);
+    System.out.println("Note values for words:" + notesArr);
     
   }
 }
