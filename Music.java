@@ -10,10 +10,10 @@ public class Music {
   }
 
   /* Method that takes a string and counts all of the words
-  * and then mods by 12. This number correlates to a musical key.
-  * Input: String
-  * Output: Integer
-  */
+   * and then mods by 12. This number correlates to a musical key.
+   * Input: String
+   * Output: Integer
+   */
   public int WordCountToKey(String words) {
     words = words.trim(); // eliminates white space
     int cycle = 0;
@@ -35,7 +35,7 @@ public class Music {
    * the number of notes in the key.
    * Input: String
    * Output: Integer ArrayList
-                                              */
+   */
   public ArrayList<Integer> WordsToNotesVal(String sentence) {
     sentence = sentence.trim();
     ArrayList<Integer> noteVals = new ArrayList<>();
@@ -62,7 +62,22 @@ public class Music {
     return noteVals;
   }
 
-  
+  /*
+  This method takes an array list of note values from 0-7 representing the
+  diatonic scale, and asigns the corresponding solfege to them.
+   */
+  public ArrayList<String> noteValsToSolfege(ArrayList<Integer> arrL) {
+    ArrayList<String> solfege = new ArrayList<>();
+    String [] solfegeList = {"do ", "re", "mi", "fa", "so", "la", "ti", "do"};
+
+    //Loops through given array front to back
+    for(int i = 0; i < arrL.size(); i++) {
+      // First the note value is retrieved based on i,
+      // then that value is used to obtain the correct solfege
+      solfege.add(solfegeList[arrL.get(i)]);
+    }
+    return solfege;
+  }
   
   
   

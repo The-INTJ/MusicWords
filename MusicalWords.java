@@ -60,7 +60,8 @@ public class MusicalWords {
 
     // Testing print statements
     System.out.println("Key: " + key);
-    System.out.println("Note values for words:" + notesArr);
+    System.out.println("Note values for words: " + notesArr);
+    System.out.println("Corresponding solfege values: " + music.noteValsToSolfege(notesArr));
     
   }
 }
