@@ -8,8 +8,12 @@ public class Music {
   public Music() {
     
   }
-  
-  
+
+  /* Method that takes a string and counts all of the words
+  * and then mods by 12. This number correlates to a musical key.
+  * Input: String
+  * Output: Integer
+  */
   public int WordCountToKey(String words) {
     words = words.trim(); // eliminates white space
     int cycle = 0;
@@ -23,7 +27,15 @@ public class Music {
     }
     return wordNumber % 12; // there are 12 musical keys
   }
-  
+
+
+  /* Method that takes a string and turns each
+   * word into a number. It will do this based on
+   * the sum of the ASCII values of each letter, mod
+   * the number of notes in the key.
+   * Input: String
+   * Output: Integer ArrayList
+                                              */
   public ArrayList<Integer> WordsToNotesVal(String sentence) {
     sentence = sentence.trim();
     ArrayList<Integer> noteVals = new ArrayList<>();
