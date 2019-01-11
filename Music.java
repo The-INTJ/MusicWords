@@ -68,7 +68,7 @@ public class Music {
    */
   public ArrayList<String> noteValsToSolfege(ArrayList<Integer> arrL) {
     ArrayList<String> solfege = new ArrayList<>();
-    String [] solfegeList = {"do ", "re", "mi", "fa", "so", "la", "ti", "do"};
+    String [] solfegeList = {"do ", "re", "mi", "fa", "so", "la", "ti", "Hdo"};
 
     //Loops through given array front to back
     for(int i = 0; i < arrL.size(); i++) {
@@ -79,6 +79,46 @@ public class Music {
     return solfege;
   }
   
-  
+  /* Method that takes a string and turns each
+   * word into a number. It will do this based on
+   * the length of each word. This number will correspond to
+   * the length of a note based upon the time signature provided.
+   * Input: String
+   * Output: Integer ArrayList
+   */
+  public ArrayList<Integer> WordsToRhythmVals(String sentence) {
+    sentence = sentence.trim();
+    ArrayList<Integer> rhythmVals = new ArrayList<>();
+      int currentWordVal = 0;
+      int cycle = 0;
+      boolean newWordFlag = true;
+      // While loop cycles through each character of the string
+      while(cycle < sentence.length()) {
+        currentWordVal = currentWordVal + ((int) sentence.charAt(cycle)); // Adds the ascii value of the character to a variable
+        // Checks for spaces
+        if (Character.isWhitespace(sentence.charAt(cycle)) && !(Character.isWhitespace(sentence.charAt(cycle + 1)))) {
+          newWordFlag = true;
+        }
+        // If the space check is true, it will add the word value to the arraylist, then reset the variables for the start
+        // of a new word
+        if (newWordFlag) {
+          currentWordVal = currentWordVal % 5;
+          // Assuming the 16th, 8th, quarter, half, and whole note,
+          //   there are five note values that could happen, so mod 5.
+          rhythmVals.add(currentWordVal);
+          currentWordVal = 0;
+          newWordFlag = false;
+        }
+        cycle++;
+      }
+    return rhythmVals;
+  }
+
+
+  public static int getTimeSignature(String sentence) {
+    int timeSig = sentence.length() % 3; // going to use three time signatures, this gives 0, 1, and 2
+    return timeSig;
+  }
+
   
 }

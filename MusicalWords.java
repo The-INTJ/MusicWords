@@ -25,7 +25,9 @@ public class MusicalWords {
     System.out.print("Enter a sentence: ");
     String sentence = scan.nextLine();
     ArrayList<Integer> notesArr;
+    ArrayList<Integer> rhythmArr;
     int key;
+    int timeSignature;
     Music music = new Music();
     
                                              /* Method that takes a string and turns each
@@ -43,7 +45,7 @@ public class MusicalWords {
                                               * Input: String
                                               * Output: Integer ArrayList
                                               */
-    // rhythmArr = music.WordsToRhythmVal(sentence);
+    rhythmArr = music.WordsToRhythmVals(sentence);
     
                                              /* Method that takes a string and counts all of the words
                                               * and then mods by 12. This number correlates to a musical key.
@@ -51,15 +53,24 @@ public class MusicalWords {
                                               * Output: Integer
                                               */                                         
     key = music.WordCountToKey(sentence);
+
+                                             /* Method that takes a string and counts all of the words
+                                              * and then mods by 3. This number correlates to a time signature.
+                                              * Input: String
+                                              * Output: Integer
+                                              */
+    timeSignature = music.getTimeSignature(sentence);
     
                                              /* Method that uses the rhythm and tone array lists and the 
                                               * key integer to produce music.
                                               * Input: Two ArrayList, one Integer
                                               */                                         
-    // key = music.createTune(notesArr, rhythmArr, key);
+    // music.createTune(notesArr, rhythmArr, key);
 
     // Testing print statements
     System.out.println("Key: " + key);
+    System.out.println("Time Signature: " + timeSignature);
+    System.out.println("Rhythm values for words: " + rhythmArr);
     System.out.println("Note values for words: " + notesArr);
     System.out.println("Corresponding solfege values: " + music.noteValsToSolfege(notesArr));
     
